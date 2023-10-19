@@ -2,8 +2,13 @@
 import Image from 'next/image'
 import React from 'react'
 
+const API_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http:localhost:3000' // Development API URL
+    : 'https://buy-food-ng.vercel.app' // Production API URL
+
 const getData = async () => {
-  const res = await fetch('http://localhost:3000/api/products', {
+  const res = await fetch(`${API_URL}/api/products`, {
     cache: 'no-store',
   })
 
